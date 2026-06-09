@@ -40,3 +40,113 @@ footer {
     color: white;
     padding: 10px;
 }
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+background:#111827;
+position:sticky;
+top:0;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+}
+
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#3b82f6,#9333ea);
+animation:bg 8s infinite alternate;
+}
+
+@keyframes bg{
+from{filter:hue-rotate(0deg);}
+to{filter:hue-rotate(60deg);}
+}
+
+.hero h1{
+font-size:55px;
+}
+
+.hero span{
+color:yellow;
+}
+
+button{
+padding:12px 30px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:18px;
+margin-top:20px;
+}
+
+#skills{
+padding:80px;
+text-align:center;
+}
+
+.cards{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.card{
+width:220px;
+height:220px;
+position:relative;
+transform-style:preserve-3d;
+transition:1s;
+cursor:pointer;
+}
+
+.card.flip{
+transform:rotateY(180deg);
+}
+
+.front,.back{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+box-sizing:border-box;
+backface-visibility:hidden;
+font-size:22px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+box-shadow:0 0 20px rgba(255,255,255,.1);
+}
+
+.back{
+transform:rotateY(180deg);
+background:#2563eb;
+}
+
+#contact{
+padding:80px;
+text-align:center;
+}
