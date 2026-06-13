@@ -666,3 +666,21 @@ opacity:1;
 transform:translateY(0);
 
 }
+
+#progress{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+height:4px;
+
+background:#FFD60A;
+
+width:0;
+
+z-index:9999;
+
+}
