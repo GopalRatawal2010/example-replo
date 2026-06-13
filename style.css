@@ -636,3 +636,14 @@ font-size:16px;
 .logo{
 
 font-size:34px;
+.cursor-glow{
+position:fixed;
+width:180px;
+height:180px;
+background:radial-gradient(circle,rgba(255,214,10,.3),transparent);
+border-radius:50%;
+pointer-events:none;
+transform:translate(-50%,-50%);
+filter:blur(20px);
+z-index:-1;
+}
