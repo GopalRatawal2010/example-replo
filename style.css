@@ -636,6 +636,7 @@ font-size:16px;
 .logo{
 
 font-size:34px;
+
 .cursor-glow{
 position:fixed;
 width:180px;
@@ -646,4 +647,22 @@ pointer-events:none;
 transform:translate(-50%,-50%);
 filter:blur(20px);
 z-index:-1;
+}
+
+section{
+
+opacity:0;
+
+transform:translateY(60px);
+
+transition:1s;
+
+}
+
+section.show{
+
+opacity:1;
+
+transform:translateY(0);
+
 }
