@@ -449,3 +449,27 @@ sec.classList.add("show");
 });
 
 }
+
+document.querySelectorAll(".counter").forEach(counter=>{
+
+const update=()=>{
+
+const target=+counter.dataset.target;
+
+const count=+counter.innerText;
+
+const speed=target/100;
+
+if(count<target){
+
+counter.innerText=Math.ceil(count+speed);
+
+setTimeout(update,20);
+
+}
+
+};
+
+update();
+
+});
