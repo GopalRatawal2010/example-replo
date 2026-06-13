@@ -2,24 +2,17 @@
 // Loading Screen
 // --------------------
 
-window.addEventListener("load", () => {
+window.addEventListener("load", function () {
+    const loader = document.getElementById("loader");
 
-const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.transition = "opacity 0.5s ease";
+        loader.style.opacity = "0";
 
-setTimeout(() => {
-
-loader.style.opacity = "0";
-
-loader.style.pointerEvents = "none";
-
-setTimeout(() => {
-
-loader.style.display = "none";
-
-},500);
-
-},1200);
-
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 500);
+    }
 });
 
 
