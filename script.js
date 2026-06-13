@@ -421,3 +421,11 @@ x+=0.3;
 hero.style.backgroundPosition=x+"px";
 
 },30);
+const cursor = document.createElement("div");
+cursor.className = "cursor-glow";
+document.body.appendChild(cursor);
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
