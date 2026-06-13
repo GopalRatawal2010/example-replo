@@ -40,6 +40,35 @@ background-position:0% 50%;
 
 }
 
+.particle{
+
+position:fixed;
+
+bottom:-20px;
+
+width:6px;
+
+height:6px;
+
+background:white;
+
+border-radius:50%;
+
+animation:float linear infinite;
+
+opacity:.4;
+
+}
+
+@keyframes float{
+
+to{
+
+transform:translateY(-120vh);
+
+}
+
+}
 
 #loader {
     position: fixed;
