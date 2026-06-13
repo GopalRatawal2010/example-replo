@@ -2,18 +2,15 @@
 // Loading Screen
 // --------------------
 
-window.addEventListener("load", function () {
-    const loader = document.getElementById("loader");
+window.onload=()=>{
 
-    if (loader) {
-        loader.style.transition = "opacity 0.5s ease";
-        loader.style.opacity = "0";
+setTimeout(()=>{
 
-        setTimeout(() => {
-            loader.style.display = "none";
-        }, 500);
-    }
-});
+document.getElementById("loader").style.display="none";
+
+},1000);
+
+};
 
 for(let i=0;i<40;i++){
 
