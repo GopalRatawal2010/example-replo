@@ -1,16 +1,23 @@
-:root{
-    --black:#000814;
-    --navy:#001d3d;
-    --blue:#003566;
-    --gold:#ffc300;
-    --yellow:#ffd60a;
-    --white:#ffffff;
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(
+    90deg,
+    #000814 0%,
+    #001d3d 20%,
+    #003566 45%,
+    #ffc300 70%,
+    #ffd60a 100%);
+    background-size:300% 300%;
+    animation:gradientMove 12s ease infinite;
+    color:white;
+    overflow-x:hidden;
 }
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    text-align: center;
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 header {
