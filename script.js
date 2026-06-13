@@ -429,3 +429,23 @@ document.addEventListener("mousemove", (e) => {
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY + "px";
 });
+
+const reveals = document.querySelectorAll("section");
+
+window.addEventListener("scroll", reveal);
+
+function reveal(){
+
+reveals.forEach(sec=>{
+
+const top = sec.getBoundingClientRect().top;
+
+if(top < window.innerHeight-120){
+
+sec.classList.add("show");
+
+}
+
+});
+
+}
