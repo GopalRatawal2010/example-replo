@@ -493,3 +493,13 @@ behavior:"smooth"
 });
 
 };
+
+window.addEventListener("scroll",()=>{
+
+const winScroll=document.documentElement.scrollTop;
+
+const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+
+document.getElementById("progress").style.width=(winScroll/height)*100+"%";
+
+});
