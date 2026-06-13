@@ -1,3 +1,11 @@
+:root{
+    --black:#000814;
+    --navy:#001d3d;
+    --blue:#003566;
+    --gold:#ffc300;
+    --yellow:#ffd60a;
+    --white:#ffffff;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
