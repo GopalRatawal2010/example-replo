@@ -15,6 +15,19 @@ window.addEventListener("load", function () {
     }
 });
 
+for(let i=0;i<40;i++){
+
+let p=document.createElement("span");
+
+p.className="particle";
+
+p.style.left=Math.random()*100+"vw";
+
+p.style.animationDuration=Math.random()*8+5+"s";
+
+document.body.appendChild(p);
+
+}
 
 // --------------------
 // Typing Animation
