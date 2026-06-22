@@ -771,3 +771,15 @@ background-position:-200% 0;
 .active{
 color:#FFD60A;
 }
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#001D3D;
+}
+
+::-webkit-scrollbar-thumb{
+background:#FFD60A;
+border-radius:20px;
+}
