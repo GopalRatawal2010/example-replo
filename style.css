@@ -880,3 +880,40 @@ font-size:42px;
 }
 
 }
+.hero-profile{
+
+margin-bottom:30px;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.hero-profile img{
+
+width:220px;
+
+height:220px;
+
+object-fit:cover;
+
+border-radius:50%;
+
+border:5px solid #FFD60A;
+
+box-shadow:
+0 0 30px #FFD60A,
+0 0 60px rgba(255,214,10,.5);
+
+animation:floatProfile 4s ease-in-out infinite;
+
+}
+
+@keyframes floatProfile{
+
+50%{
+transform:translateY(-12px);
+}
+
+}
