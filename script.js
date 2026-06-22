@@ -1,44 +1,42 @@
-// --------------------
-// Loading Screen
-// --------------------
+// =========================
+// SKELETON LOADER
+// =========================
 
-window.onload=()=>{
+window.addEventListener("load", () => {
 
-setTimeout(()=>{
+const skeleton = document.getElementById("skeleton");
 
-document.getElementById("loader").style.display="none";
+setTimeout(() => {
 
-},1000);
+if(skeleton){
 
-};
+skeleton.style.opacity = "0";
 
-for(let i=0;i<40;i++){
+skeleton.style.transition = "0.5s";
 
-let p=document.createElement("span");
+setTimeout(() => {
 
-p.className="particle";
+skeleton.style.display = "none";
 
-p.style.left=Math.random()*100+"vw";
-
-p.style.animationDuration=Math.random()*8+5+"s";
-
-document.body.appendChild(p);
+},500);
 
 }
 
-// --------------------
-// Typing Animation
-// --------------------
+},1500);
+
+});
+
+
+// =========================
+// TYPING ANIMATION
+// =========================
 
 const words = [
 
-"Creative Writer",
-
-"Public Speaker",
-
-"Manager",
-
-"Presentation Designer"
+"Editor",
+"Artist",
+"Sports Enthusiast",
+"Coder"
 
 ];
 
@@ -49,6 +47,8 @@ let deleting = false;
 const typing = document.getElementById("typing");
 
 function typeEffect(){
+
+if(!typing) return;
 
 const current = words[wordIndex];
 
@@ -93,67 +93,83 @@ setTimeout(typeEffect,deleting ? 50 : 100);
 typeEffect();
 
 
-// --------------------
-// Scroll Progress Bar
-// --------------------
+// =========================
+// COUNTERS
+// =========================
+
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+
+const updateCounter=()=>{
+
+const target = +counter.dataset.target;
+
+const count = +counter.innerText;
+
+const increment = target / 100;
+
+if(count < target){
+
+counter.innerText = Math.ceil(count + increment);
+
+setTimeout(updateCounter,20);
+
+}else{
+
+counter.innerText = target;
+
+}
+
+};
+
+updateCounter();
+
+});
+
+
+// =========================
+// PROGRESS BAR
+// =========================
 
 window.addEventListener("scroll",()=>{
 
 const scrollTop = document.documentElement.scrollTop;
 
-const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const height =
+document.documentElement.scrollHeight -
+document.documentElement.clientHeight;
 
 const progress = (scrollTop / height) * 100;
 
-document.getElementById("progressBar").style.width = progress + "%";
+const bar = document.getElementById("progressBar");
+
+if(bar){
+
+bar.style.width = progress + "%";
+
+}
 
 });
 
 
-// --------------------
-// Flip Cards on Click
-// --------------------
+// =========================
+// SCROLL REVEAL
+// =========================
 
-const cards = document.querySelectorAll(".card");
+const reveals = document.querySelectorAll(".reveal");
 
-cards.forEach(card=>{
+function revealSections(){
 
-card.addEventListener("click",()=>{
+reveals.forEach(section=>{
 
-card.style.transform =
-
-card.style.transform === "rotateY(180deg)"
-
-? "rotateY(0deg)"
-
-: "rotateY(180deg)";
-
-});
-
-});
-
-
-// --------------------
-// Smooth Reveal Animation
-// --------------------
-
-const revealElements = document.querySelectorAll(
-
-"section,.project,.glass,.card"
-
-);
-
-function reveal(){
+const top = section.getBoundingClientRect().top;
 
 const trigger = window.innerHeight - 120;
 
-revealElements.forEach(item=>{
-
-const top = item.getBoundingClientRect().top;
-
 if(top < trigger){
 
-item.classList.add("active");
+section.classList.add("show");
 
 }
 
@@ -161,70 +177,36 @@ item.classList.add("active");
 
 }
 
-window.addEventListener("scroll",reveal);
+window.addEventListener("scroll", revealSections);
 
-reveal();
+revealSections();
 
 
-// --------------------
-// Smooth Navbar Highlight
-// --------------------
+// =========================
+// TOP BUTTON
+// =========================
 
-const links = document.querySelectorAll("nav a");
-
-links.forEach(link=>{
-
-link.addEventListener("click",()=>{
-
-links.forEach(l=>l.classList.remove("selected"));
-
-link.classList.add("selected");
-
-});
-
-});
-// ------------------------
-// Back To Top Button
-// ------------------------
-
-const topBtn = document.createElement("button");
-
-topBtn.innerHTML = "↑";
-
-topBtn.id = "topBtn";
-
-document.body.appendChild(topBtn);
-
-topBtn.style.position = "fixed";
-topBtn.style.bottom = "25px";
-topBtn.style.right = "25px";
-topBtn.style.width = "55px";
-topBtn.style.height = "55px";
-topBtn.style.border = "none";
-topBtn.style.borderRadius = "50%";
-topBtn.style.fontSize = "22px";
-topBtn.style.cursor = "pointer";
-topBtn.style.background = "#FFD60A";
-topBtn.style.color = "#000";
-topBtn.style.boxShadow = "0 0 20px gold";
-topBtn.style.display = "none";
-topBtn.style.transition = ".3s";
+const topBtn = document.getElementById("topBtn");
 
 window.addEventListener("scroll",()=>{
 
-if(window.scrollY>400){
+if(!topBtn) return;
 
-topBtn.style.display="block";
+if(window.scrollY > 300){
+
+topBtn.style.display = "block";
 
 }else{
 
-topBtn.style.display="none";
+topBtn.style.display = "none";
 
 }
 
 });
 
-topBtn.onclick=()=>{
+if(topBtn){
+
+topBtn.addEventListener("click",()=>{
 
 window.scrollTo({
 
@@ -234,329 +216,47 @@ behavior:"smooth"
 
 });
 
-};
+});
+
+}
 
 
-// ------------------------
-// Mouse Glow Effect
-// ------------------------
+// =========================
+// CURSOR GLOW
+// =========================
 
-const glow=document.createElement("div");
-
-document.body.appendChild(glow);
-
-glow.style.position="fixed";
-glow.style.width="180px";
-glow.style.height="180px";
-glow.style.borderRadius="50%";
-glow.style.pointerEvents="none";
-glow.style.background="radial-gradient(circle,#FFD60A55,transparent)";
-glow.style.filter="blur(20px)";
-glow.style.transform="translate(-50%,-50%)";
-glow.style.zIndex="-1";
+const glow = document.querySelector(".cursor-glow");
 
 document.addEventListener("mousemove",(e)=>{
 
-glow.style.left=e.clientX+"px";
+if(!glow) return;
 
-glow.style.top=e.clientY+"px";
+glow.style.left = e.clientX + "px";
+
+glow.style.top = e.clientY + "px";
 
 });
 
 
-// ------------------------
-// Floating Particles
-// ------------------------
+// =========================
+// ACTIVE NAV LINKS
+// =========================
 
-for(let i=0;i<25;i++){
+const sections = document.querySelectorAll("section");
 
-let particle=document.createElement("span");
-
-particle.classList.add("particle");
-
-document.body.appendChild(particle);
-
-particle.style.left=Math.random()*100+"vw";
-
-particle.style.top=Math.random()*100+"vh";
-
-particle.style.width=Math.random()*8+3+"px";
-
-particle.style.height=particle.style.width;
-
-particle.style.position="fixed";
-
-particle.style.borderRadius="50%";
-
-particle.style.background="rgba(255,255,255,.4)";
-
-particle.style.animation=
-"floatParticle "+
-(Math.random()*12+8)
-+"s linear infinite";
-
-}
-
-const style=document.createElement("style");
-
-style.innerHTML=`
-
-.particle{
-
-pointer-events:none;
-
-opacity:.5;
-
-}
-
-@keyframes floatParticle{
-
-0%{
-
-transform:translateY(0px);
-
-opacity:.4;
-
-}
-
-50%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(-120vh);
-
-opacity:0;
-
-}
-
-}
-
-.active{
-
-animation:fadeUp 1s ease forwards;
-
-}
-
-@keyframes fadeUp{
-
-from{
-
-opacity:0;
-
-transform:translateY(40px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-.selected{
-
-color:#FFD60A !important;
-
-}
-
-`;
-
-document.head.appendChild(style);
-
-
-// ------------------------
-// Dark / Light Mode Toggle
-// ------------------------
-
-const mode=document.createElement("button");
-
-mode.innerHTML="🌙";
-
-mode.style.position="fixed";
-mode.style.left="20px";
-mode.style.bottom="20px";
-mode.style.width="55px";
-mode.style.height="55px";
-mode.style.borderRadius="50%";
-mode.style.border="none";
-mode.style.cursor="pointer";
-mode.style.fontSize="22px";
-mode.style.boxShadow="0 0 15px rgba(255,255,255,.4)";
-
-document.body.appendChild(mode);
-
-let dark=true;
-
-mode.onclick=()=>{
-
-if(dark){
-
-document.body.style.filter="invert(1) hue-rotate(180deg)";
-
-mode.innerHTML="☀️";
-
-}else{
-
-document.body.style.filter="none";
-
-mode.innerHTML="🌙";
-
-}
-
-dark=!dark;
-
-};
-
-
-// ------------------------
-// Hero Floating Animation
-// ------------------------
-
-const hero=document.querySelector(".hero");
-
-let x=0;
-
-setInterval(()=>{
-
-x+=0.3;
-
-hero.style.backgroundPosition=x+"px";
-
-},30);
-const cursor = document.createElement("div");
-cursor.className = "cursor-glow";
-document.body.appendChild(cursor);
-
-document.addEventListener("mousemove", (e) => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
-
-const reveals = document.querySelectorAll("section");
-
-window.addEventListener("scroll", reveal);
-
-function reveal(){
-
-reveals.forEach(sec=>{
-
-const top = sec.getBoundingClientRect().top;
-
-if(top < window.innerHeight-120){
-
-sec.classList.add("show");
-
-}
-
-});
-
-}
-
-document.querySelectorAll(".counter").forEach(counter=>{
-
-const update=()=>{
-
-const target=+counter.dataset.target;
-
-const count=+counter.innerText;
-
-const speed=target/100;
-
-if(count<target){
-
-counter.innerText=Math.ceil(count+speed);
-
-setTimeout(update,20);
-
-}
-
-};
-
-update();
-
-});
-
-const btn=document.getElementById("top");
+const navLinks = document.querySelectorAll("nav a");
 
 window.addEventListener("scroll",()=>{
 
-btn.style.display=window.scrollY>300?"block":"none";
+let current = "";
 
-});
+sections.forEach(section=>{
 
-btn.onclick=()=>{
+const sectionTop = section.offsetTop - 150;
 
-window.scrollTo({
+if(scrollY >= sectionTop){
 
-top:0,
-
-behavior:"smooth"
-
-});
-
-};
-
-window.addEventListener("scroll",()=>{
-
-const winScroll=document.documentElement.scrollTop;
-
-const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-
-document.getElementById("progress").style.width=(winScroll/height)*100+"%";
-
-});
-
-document.querySelectorAll(".card").forEach(card=>{
-
-card.addEventListener("mousemove",(e)=>{
-
-const rect=card.getBoundingClientRect();
-
-const x=e.clientX-rect.left;
-
-const y=e.clientY-rect.top;
-
-const rotateY=(x-rect.width/2)/15;
-
-const rotateX=-(y-rect.height/2)/15;
-
-card.style.transform=
-`perspective(1000px)
-rotateX(${rotateX}deg)
-rotateY(${rotateY}deg)`;
-
-});
-
-card.addEventListener("mouseleave",()=>{
-
-card.style.transform=
-"perspective(1000px) rotateX(0) rotateY(0)";
-
-});
-
-});
-const sections=document.querySelectorAll("section");
-const navLinks=document.querySelectorAll("nav a");
-
-window.addEventListener("scroll",()=>{
-
-let current="";
-
-sections.forEach(sec=>{
-
-const top=sec.offsetTop-200;
-
-if(scrollY>=top){
-
-current=sec.id;
+current = section.getAttribute("id");
 
 }
 
@@ -566,7 +266,7 @@ navLinks.forEach(link=>{
 
 link.classList.remove("active");
 
-if(link.href.includes(current)){
+if(link.getAttribute("href").includes(current)){
 
 link.classList.add("active");
 
@@ -575,20 +275,24 @@ link.classList.add("active");
 });
 
 });
-window.addEventListener("scroll",()=>{
 
-const nav=document.querySelector("nav");
 
-if(scrollY>50){
+// =========================
+// FLOATING PARTICLES
+// =========================
 
-nav.style.background=
-"rgba(0,0,0,.35)";
+for(let i=0;i<25;i++){
 
-}else{
+const particle = document.createElement("span");
 
-nav.style.background=
-"rgba(255,255,255,.08)";
+particle.classList.add("particle");
+
+particle.style.left =
+Math.random()*100 + "vw";
+
+particle.style.animationDuration =
+(Math.random()*10+8) + "s";
+
+document.body.appendChild(particle);
 
 }
-
-});
