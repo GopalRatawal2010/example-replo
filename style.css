@@ -713,3 +713,58 @@ width:0;
 z-index:9999;
 
 }
+
+#skeleton{
+position:fixed;
+inset:0;
+background:#000814;
+z-index:99999;
+padding:20px;
+}
+
+.skeleton-navbar,
+.skeleton-hero,
+.s-card{
+
+background:linear-gradient(
+90deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.18),
+rgba(255,255,255,.08)
+);
+
+background-size:200% 100%;
+
+animation:skeleton 1.5s infinite;
+
+border-radius:15px;
+}
+
+.skeleton-navbar{
+height:70px;
+margin-bottom:30px;
+}
+
+.skeleton-hero{
+height:300px;
+margin-bottom:30px;
+}
+
+.skeleton-cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.s-card{
+height:220px;
+}
+
+@keyframes skeleton{
+0%{
+background-position:200% 0;
+}
+100%{
+background-position:-200% 0;
+}
+}
