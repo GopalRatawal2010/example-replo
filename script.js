@@ -588,3 +588,54 @@ document.head.appendChild(particleStyle);
 console.log(
 "Portfolio Created By Gopal Kumar"
 );
+
+const terminalInput =
+document.getElementById("terminal-input");
+
+const terminalOutput =
+document.getElementById("terminal-output");
+
+if(terminalInput){
+
+terminalInput.addEventListener("keydown",(e)=>{
+
+if(e.key==="Enter"){
+
+const cmd =
+terminalInput.value.toLowerCase();
+
+if(cmd==="about"){
+
+terminalOutput.innerHTML +=
+"<br>> About: Passionate about editing, art, coding and sports.";
+
+}
+
+else if(cmd==="skills"){
+
+terminalOutput.innerHTML +=
+"<br>> Skills: Editing, Artist, Coding, Sports";
+
+}
+
+else if(cmd==="contact"){
+
+terminalOutput.innerHTML +=
+"<br>> Email: gopalratawal41@gmail.com";
+
+}
+
+else{
+
+terminalOutput.innerHTML +=
+"<br>> Command not found";
+
+}
+
+terminalInput.value="";
+
+}
+
+});
+
+}
