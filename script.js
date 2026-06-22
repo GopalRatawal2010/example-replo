@@ -575,3 +575,20 @@ link.classList.add("active");
 });
 
 });
+window.addEventListener("scroll",()=>{
+
+const nav=document.querySelector("nav");
+
+if(scrollY>50){
+
+nav.style.background=
+"rgba(0,0,0,.35)";
+
+}else{
+
+nav.style.background=
+"rgba(255,255,255,.08)";
+
+}
+
+});
