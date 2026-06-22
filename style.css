@@ -917,3 +917,42 @@ transform:translateY(-12px);
 }
 
 }
+.social-container{
+
+display:flex;
+
+justify-content:center;
+
+gap:25px;
+
+flex-wrap:wrap;
+
+}
+
+.social-container a{
+
+padding:15px 30px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+border-radius:50px;
+
+text-decoration:none;
+
+color:white;
+
+transition:.4s;
+
+}
+
+.social-container a:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 25px #FFD60A;
+
+color:#FFD60A;
+
+}
