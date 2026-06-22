@@ -639,3 +639,66 @@ terminalInput.value="";
 });
 
 }
+
+const chatInput =
+document.getElementById("chat-input");
+
+const chatMessages =
+document.getElementById("chat-messages");
+
+if(chatInput){
+
+chatInput.addEventListener("keydown",(e)=>{
+
+if(e.key==="Enter"){
+
+const question =
+chatInput.value.toLowerCase();
+
+let answer =
+"I don't know that yet.";
+
+if(question.includes("name")){
+
+answer =
+"My name is Gopal Kumar.";
+
+}
+
+else if(question.includes("skills")){
+
+answer =
+"My skills are Editing, Art, Coding and Sports.";
+
+}
+
+else if(question.includes("email")){
+
+answer =
+"gopalratawal41@gmail.com";
+
+}
+
+else if(question.includes("about")){
+
+answer =
+"I enjoy editing, creating art, coding projects and participating in sports.";
+
+}
+
+chatMessages.innerHTML +=
+`<p><b>You:</b> ${chatInput.value}</p>`;
+
+chatMessages.innerHTML +=
+`<p><b>AI:</b> ${answer}</p>`;
+
+chatInput.value="";
+
+chatMessages.scrollTop =
+chatMessages.scrollHeight;
+
+}
+
+});
+
+}
